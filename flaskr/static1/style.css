@@ -9,21 +9,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 45px 66px;
+    padding: 10px 22px;
         border-radius: 0 0 25px 25px;
 }
 .logo {
     color:#724C9D;
-    font-size: 48px;
+    font-size: 32px;
     font-weight: 800;
 }
 .header_right {
     display: flex;
+    align-items: center;
 }
 .search {
+    height: 50%;
     border: 1px solid #724C9D;
     border-radius: 15px;
     display: flex;
+
+
     /*padding-left: 50px;*/
 }
 
@@ -33,7 +37,7 @@ header {
     border: 0;
     border-radius: inherit;
     height: 100%;
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 200;
     outline: none;
 }
@@ -46,8 +50,8 @@ header {
 .search button {
     color: black;
     background-color: #724C9D;
-    font-weight: 700;
-    font-size: 28px;
+    font-weight: 600;
+    font-size: 26px;
     border: 0;
     border-radius: inherit;
     height: 100%;
@@ -57,7 +61,7 @@ header {
 .sing_in {
     background-color: #9356A0;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 18px;
     color: black;
     border: 0;
     border-radius: 10px;
