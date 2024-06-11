@@ -1,0 +1,58 @@
+main {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.create {
+    background-color: #DCCAE9;
+    padding: 20px;
+    width: 35%;
+    border-radius: 15px;
+}
+
+.create h1 {
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+.title input, .short_description input, .description input {
+    width: 100%;
+    padding: 5px;
+    background-color: #DCCAE9;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.short_description input {
+    height: 50px;
+}
+
+.description input {
+    height: 100px;
+}
+
+.tags {
+
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.tag-list {
+    list-style: none;
+    padding: 0;
+
+}
+
+.save_button {
+    font-size: 16px;
+    font-weight: 550;
+    padding: 8px;
+    background-color: #9356A0;
+    border-radius: 5px;
+    border: 0;
+}
