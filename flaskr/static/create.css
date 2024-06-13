@@ -1,5 +1,4 @@
 main {
-    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,8 +6,9 @@ main {
 .create {
     background-color: #DCCAE9;
     padding: 20px;
-    width: 35%;
+    width: 70%;
     border-radius: 15px;
+    margin-top: 50px;
 }
 
 .create h1 {
@@ -27,11 +27,11 @@ main {
     margin-bottom: 15px;
 }
 .short_description input {
-    height: 50px;
+    height: 100px;
 }
 
 .description input {
-    height: 100px;
+    height: 200px;
 }
 
 .tags {

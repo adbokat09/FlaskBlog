@@ -1,25 +1,81 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../static/base.css">
+    <link rel="stylesheet" href="../../static/post_base.css">
+    <link rel="stylesheet" href="../../static/create.css">
+</head>
+<body>
+    <header>
 
-{% block header %}
-<h1>{% block title %}New Post{% endblock %}</h1>
-{% endblock %}
+        <div class="logo">Blog</div>
 
-{% block content %}
-<form method="post">
-    <label for="title">Title</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required>
-    <label for="short_description">Short Description</label>
-    <textarea name="short_description" id="short_description">{{ request.form['short_description'] }}</textarea>
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
-    <label>Tags</label>
-    <select name="tags" multiple>
-        {%  for tag in tags %}
-        <option value="{{ tag['id'] }}">{{ tag['name'] }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Save">
-</form>
-{% endblock %}
+        <div class="header_right">
+            <form class="search">
+                <input name="search" placeholder="search">
+                <button>Go</button>
+            </form>
 
+            <button class="sing_in">Sing in</button>
+        </div>
 
+    </header>
+
+    <main>
+        <section class="create">
+            <h1>New Post</h1>
+
+            <div class="title">
+                <p>Title</p>
+                <input name="title">
+            </div>
+
+            <div class="short_description">
+                <p>Short description</p>
+                <input name="short_description">
+            </div>
+
+            <div class="description">
+                <p>Description</p>
+                <input name="description">
+            </div>
+
+            <div class="tags">
+                <ul class="tag-list">
+                    <li class="tag-item">
+                        <label>
+                            <input type="checkbox" name="tag" value="IT">
+                            IT
+                        </label>
+                    </li>
+
+                    <li class="tag-item">
+                        <label>
+                            <input type="checkbox" name="tag" value="Sport">
+                            Sport
+                        </label>
+                    </li>
+
+                    <li class="tag-item">
+                        <label>
+                            <input type="checkbox" name="tag" value="Hobbie">
+                            Hobbie
+                        </label>
+                    </li>
+
+                    <li class="tag-item">
+                        <label>
+                            <input type="checkbox" name="tag" value="Nature">
+                            Nature
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="save">
+                <button class="save_button">Save</button>
+            </div>
+        </section>
+    </main>
+</body>

@@ -1,24 +1,29 @@
-<!doctype html>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<!--<title>{% block title %}{% endblock %} - Flaskr</title>-->
-<nav>
-    <h1><a href="{{ url_for('blog.index') }}"><3</a></h1>
-    <ul>
-        {% if g.user %}
-        <li><span>{{ g.user['username'] }}</span>
-        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-        {% else %}
-        <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-        <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-        {% endif %}
-    </ul>
-</nav>
-<section class="content">
-    <header>
-        {% block header %}{% endblock %}
-    </header>
-    {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-    {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+<header>
+
+    <div class="logo">Blog</div>
+
+    <div class="header_right">
+        <form class="search">
+            <input name="search" placeholder="search">
+            <button>Go</button>
+        </form>
+
+        <button class="sing_in">Sing in</button>
+    </div>
+
+</header>
+
+<main>
     {% block content %}{% endblock %}
-</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/*User img*/
+
+.img {
+    font-size: 38px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4px;
+    height: 63px;
+    width: 63px;
+    background-color: #183B96;
+    border-radius: 32px;
+}
+
+/*Like and dislike*/
+
+.reactions  {
+    display: flex;
+
+}
+.like {
+    margin-right: 30px;
+}
+.like p {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.dislike, .like {
+    display: flex;
+    align-items: center;
+}
+
+.dislike p {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.dislike button, .like button {
+    background-color: #9356A0;
+    font-size: 16px;
+    font-weight: 550;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+/*Tags*/
+
+.tags button {
+    background-color: #724C9D;
+    font-size: 20px;
+    font-weight: 550;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 0;
+}
+
+/*Update and create style*/

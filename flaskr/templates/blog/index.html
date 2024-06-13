@@ -1,42 +1,145 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../static/base.css">
+    <link rel="stylesheet" href="../../static/post_base.css">
+    <link rel="stylesheet" href="../../static/post_list.css">
+</head>
+<body>
+<header>
 
-{% block header %}
-<div class="nav">
-    <h1>Posts</h1>
-    <div class="frog">
-        <form action="{{ url_for('blog.index') }}" method="get">
-            <input class="search" name="search" placeholder="search">
-            <input class="to_search" type="submit" value="go">
+    <div class="logo">Blog</div>
+
+    <div class="header_right">
+        <form class="search">
+            <input name="search" placeholder="search">
+            <button>Go</button>
         </form>
-        {% if g.user %}
-        <a class="action" href="{{ url_for('blog.create') }}">New</a>
-        {% endif %}
+
+        <button class="sing_in">Sing in</button>
     </div>
-</div>
-{% endblock %}
 
-{% block content %}
-{% for post in posts %}
-<article class="post">
-    <header>
-        <div>
-            <h1><a href="{{ url_for('blog.post_details', id=post['id']) }}">{{ post['title'] }}</a></h1>
-            <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
-        </div>
-        {% if g.user['id'] == post['author_id'] %}
-        <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
-        {% endif %}
-    </header>
-    <p class="body">{{ post['short_description'] }}</p>
-    <p class="tags_list">
-        {% for tag in post['tags'] %}
-        <span class="tag_item">#{{ tag['name'] }}</span>
-        {% endfor %}
-    </p>
+</header>
 
-</article>
-{% if not loop.last %}
-<hr>
-{% endif %}
-{% endfor %}
-{% endblock %}
+<main>
+    <section class="posts">
+        <!--    POST - 1 -->
+        <article class="post">
+            <div class="info">
+                <div class="img">A</div>
+                <div class="date_and_name">
+                    <p class="author">Adbokat</p>
+                    <i class="publication_date">03.06.2024</i>
+                </div>
+            </div>
+            <div class="text">
+                <h2 class="post_title">Why Flask is good microframework?</h2>
+                <p>
+                    In the ever-evolving field of web development, the Python-based framework Django has often been the
+                    subject of scrutiny. With its comprehensive “batteries included” philosophy, Django has carved a
+                    significant niche for itself.
+                </p>
+            </div>
+            <div class="post_footer">
+                <div class="reactions">
+                    <div class="like">
+                        <p>22</p>
+                        <button>Like</button>
+                    </div>
+
+                    <div class="dislike">
+                        <p>2</p>
+                        <button>Dislike</button>
+                    </div>
+                </div>
+
+                <div class="tags">
+                    <button>IT</button>
+                    <button>Flask</button>
+                </div>
+            </div>
+        </article>
+
+        <!--    POST - 2 -->
+
+        <article class="post">
+            <div class="info">
+                <div class="img">A</div>
+                <div class="date_and_name">
+                    <p class="author">Adbokat</p>
+                    <i class="publication_date">03.06.2024</i>
+                </div>
+            </div>
+            <div class="text">
+                <h2>Why Flask is good microframework?</h2>
+                <p>
+                    In the ever-evolving field of web development, the Python-based framework Django has often been the
+                    subject of scrutiny. With its comprehensive “batteries included” philosophy, Django has carved a
+                    significant niche for itself.
+                </p>
+            </div>
+            <div class="post_footer">
+                <div class="reactions">
+                    <div class="like">
+                        <p>22</p>
+                        <button>Like</button>
+                    </div>
+
+                    <div class="dislike">
+                        <p>2</p>
+                        <button>Dislike</button>
+                    </div>
+                </div>
+
+                <div class="tags">
+                    <button>IT</button>
+                    <button>Flask</button>
+                </div>
+            </div>
+        </article>
+
+        <!--    POST -  3    -->
+
+        <article class="post">
+            <div class="info">
+                <div class="img">A</div>
+                <div class="date_and_name">
+                    <p class="author">Adbokat</p>
+                    <i class="publication_date">03.06.2024</i>
+                </div>
+            </div>
+            <div class="text">
+                <h2>Why Flask is good microframework?</h2>
+                <p>
+                    In the ever-evolving field of web development, the Python-based framework Django has often been the
+                    subject of scrutiny. With its comprehensive “batteries included” philosophy, Django has carved a
+                    significant niche for itself.
+                </p>
+            </div>
+            <div class="post_footer">
+                <div class="reactions">
+                    <div class="like">
+                        <p>22</p>
+                        <button>Like</button>
+                    </div>
+
+                    <div class="dislike">
+                        <p>2</p>
+                        <button>Dislike</button>
+                    </div>
+                </div>
+
+                <div class="tags">
+                    <button>IT</button>
+                    <button>Flask</button>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+
+
+</body>
+</html>

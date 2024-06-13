@@ -1,44 +1,131 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../static/base.css">
+    <link rel="stylesheet" href="../../static/post_base.css">
+    <link rel="stylesheet" href="../../static/post_page.css">
+</head>
+<body>
+<header>
 
-{% block header %}
-<h1>{% block title %}{{ post['title'] }}{% endblock %}</h1>
-{% if g.user and g.user['id'] == post['author_id'] %}
-<a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
-{% endif %}
-{% endblock %}
-{% block content %}
-<article class="post">
-    <header>
-        <div>
-            <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
-        </div>
-    </header>
-    <p class="body">{{ post['body'] }}</p>
-    <p class="tags_list">
-    {% for tag in tags %}
-        <span class="tag_item">#{{ tag['name'] }}</span>
-    {% endfor %}
-    </p>
-    <div class="like_status">
-        <form class="like" method="post" action="{{ url_for('blog.like_post', id=post['id']) }}">
-            <div class="counter">{{ count_likes }}</div>
-            {% if like_status == true %}
-            <button class="active_like_status" type="submit">Like</button>
-            {% else %}
-            <button class="passive_like_status" type="submit">Like</button>
-            {% endif %}
+    <div class="logo">Blog</div>
 
+    <div class="header_right">
+        <form class="search">
+            <input name="search" placeholder="search">
+            <button>Go</button>
         </form>
-        <form class="dislike" method="post" action="{{ url_for('blog.dislike_post', id=post['id']) }}">
-            <div class="counter">{{ count_dislikes }}</div>
-            {% if like_status == false %}
-            <button class="active_like_status" type="submit">Dislike</button>
-            {% else %}
-            <button class="passive_like_status" type="submit">Dislike</button>
-            {% endif %}
-        </form>
+
+        <button class="sing_in">Sing in</button>
     </div>
 
+</header>
 
-</article>
-{% endblock %}
+
+
+<main>
+    <section class="post">
+        <div class="post_header">
+            <h1 class="title">Why Flask is good microframework?</h1>
+            <div class="author_and_date">
+                <div class="author">
+                    <div class="avatar">A</div>
+                    <p class="name">Adbokat</p>
+                </div>
+                <div class="date">
+                    <p>11.06.2024</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tags">
+            <button class="tag">IT</button>
+            <button class="tag">Flask</button>
+        </div>
+
+        <div class="text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mauris sollicitudin leo ultricies
+            malesuada sit amet ac tellus. Maecenas ut tempor orci. Etiam maximus purus in viverra porta. Mauris sed
+            enim eget lacus tincidunt molestie. Pellentesque commodo sapien metus, in elementum mi tincidunt
+            sollicitudin. In a sem sit amet turpis ultricies porttitor sed eget eros. Mauris nisi arcu, congue in
+            lectus in, pellentesque feugiat eros. Vivamus rhoncus ligula nec sapien consectetur egestas. Orci varius
+            natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque non tellus
+            venenatis, aliquet felis non, efficitur nisl. Nulla sagittis pharetra tortor eu eleifend. Vivamus est
+            neque, egestas eu dui vel, pulvinar aliquam eros. Phasellus id fermentum purus, eu finibus tortor. Duis
+            faucibus laoreet neque vel aliquet.
+            Ut pulvinar elit ut purus ultricies, non gravida velit dictum. Ut in bibendum quam, vitae ultrices odio.
+            Nullam pulvinar nisi mauris, sit amet tempor sapien fringilla ac. Orci varius natoque penatibus et
+            magnis dis parturient montes, nascetur ridiculus mus. Vivamus faucibus dapibus est sit amet facilisis.
+            Suspendisse hendrerit suscipit posuere. Cras id nunc nunc. Donec justo orci, imperdiet at placerat sed,
+            maximus sed ante. Proin ullamcorper nulla eu justo iaculis, sed sagittis sapien facilisis. Etiam varius,
+            leo eget feugiat lacinia, mi sem vulputate velit, quis consectetur nisl magna facilisis massa. Nunc est
+            enim, pellentesque ultrices aliquam a, commodo rhoncus ex. Nullam mollis id quam sit amet ultricies.
+            Donec suscipit leo non efficitur commodo. Aliquam et ullamcorper quam. Sed porttitor lacus in accumsan
+            posuere. Vestibulum sem libero, dictum eu laoreet sit amet, venenatis ut erat.
+            Aenean ac eleifend quam, ut hendrerit orci. Aenean consectetur, ipsum fermentum porta tristique, est
+            purus interdum elit, et efficitur dui sapien et quam. Mauris ac nibh at justo aliquam pulvinar sit amet
+            eu neque. Mauris non consequat neque. Ut in euismod nulla, quis condimentum ante. Nunc eu cursus nulla.
+            Nam posuere ultrices urna id ullamcorper. Mauris viverra, nulla nec facilisis egestas, erat odio
+            pellentesque nisl, nec consectetur risus purus sed est. Integer sed tortor ex. Ut leo dolor, pulvinar et
+            commodo nec, lobortis in purus. Vestibulum efficitur purus sit amet odio malesuada, eu condimentum massa
+            aliquet. Quisque ullamcorper sapien ut dapibus hendrerit.
+            Nullam ut ligula urna. Nam sed elit aliquam, condimentum elit at, consequat sapien. Integer venenatis,
+            dui a vehicula finibus, dolor mauris mollis leo, in vulputate diam nulla a libero. Praesent pulvinar
+            sapien nisl, vitae egestas erat iaculis et. Vivamus in tincidunt ex. Orci varius natoque penatibus et
+            magnis dis parturient montes, nascetur ridiculus mus. Donec nisi nibh, congue gravida semper eu, viverra
+            in enim. Donec sit amet lobortis diam, sodales commodo magna. Curabitur faucibus sem eu euismod
+            vehicula. Vivamus placerat semper purus, eu facilisis justo porta a. Pellentesque consequat purus vitae
+            ligula consequat sagittis.
+            Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus dapibus
+            nulla lectus, nec accumsan est varius nec. Suspendisse eu accumsan lorem, sed sollicitudin eros. Quisque
+            rhoncus vestibulum lectus, vitae posuere massa interdum vulputate. Morbi sit amet mauris eu nibh
+            venenatis venenatis et nec odio. Quisque ornare ultrices magna ultricies facilisis. Suspendisse tortor
+            erat, faucibus sit amet porttitor quis, imperdiet nec dolor. Duis tempus tincidunt malesuada. In purus
+            risus, porta porttitor metus in, vehicula feugiat quam. Duis mi arcu, cursus id ligula eu, tempus
+            laoreet lorem. Proin libero neque, interdum a lectus eu, scelerisque semper nulla. Pellentesque
+            sagittis, tellus ut vestibulum condimentum, arcu neque gravida augue, id porttitor enim ante sit amet
+            neque. Donec non velit quis libero scelerisque semper vel maximus dui. Donec ultrices placerat augue
+            malesuada egestas. Duis sit amet ligula nulla. Praesent at nibh purus. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Nulla eget mauris sollicitudin leo ultricies malesuada sit amet ac tellus.
+            Maecenas ut tempor orci. Etiam maximus purus in viverra porta. Mauris sed enim eget lacus tincidunt
+            molestie. Pellentesque commodo sapien metus, in elementum mi tincidunt sollicitudin. In a sem sit amet
+            turpis ultricies porttitor sed eget eros. Mauris nisi arcu, congue in lectus in, pellentesque feugiat
+            eros. Vivamus rhoncus ligula nec sapien consectetur egestas. Orci varius natoque penatibus et magnis dis
+            parturient montes, nascetur ridiculus mus. Pellentesque non tellus venenatis, aliquet felis non,
+            efficitur nisl. Nulla sagittis pharetra tortor eu eleifend. Vivamus est neque, egestas eu dui vel,
+            pulvinar aliquam eros. Phasellus id fermentum purus, eu finibus tortor. Duis faucibus laoreet neque vel
+            aliquet.
+            Ut pulvinar elit ut purus ultricies, non gravida velit dictum. Ut in bibendum quam, vitae ultrices odio.
+            Nullam pulvinar nisi mauris, sit amet tempor sapien fringilla ac. Orci varius natoque penatibus et
+            magnis dis parturient montes, nascetur ridiculus mus. Vivamus faucibus dapibus est sit amet facilisis.
+            Suspendisse hendrerit suscipit posuere. Cras id nunc nunc. Donec justo orci, imperdiet at placerat sed,
+            maximus sed ante. Proin ullamcorper nulla eu justo iaculis, sed sagittis sapien facilisis. Etiam varius,
+            leo eget feugiat lacinia, mi sem vulputate velit, quis consectetur nisl magna facilisis massa. Nunc est
+            enim, pellentesque ultrices aliquam a, commodo rhoncus ex. Nullam mollis id quam sit amet ultricies.
+            Donec suscipit leo non efficitur commodo. Aliquam et ullamcorper quam. Sed porttitor lacus in accumsan
+            posuere. Vestibulum sem libero, dictum eu laoreet sit amet, venenatis ut erat.
+            Aenean ac eleifend quam, ut hendrerit orci. Aenean consectetur, ipsum fermentum porta tristique, est
+            purus interdum elit, et efficitur dui sapien et quam. Mauris ac nibh at justo aliquam pulvinar sit amet
+            eu neque. Mauris non consequat neque. Ut in euismod nulla, quis condimentum ante. Nunc eu cursus nulla.
+            Nam posuere ultrices urna id ullamcorper. Mauris viverra, nulla nec facilisis egestas, erat odio
+            pellentesque nisl, nec consectetur risus purus sed est. Integer sed tortor ex. Ut leo dolor, pulvinar et
+            commodo nec, lobortis in purus. Vestibulum eff
+
+        </div>
+        <div class="reactions">
+            <div class="like">
+                <p class="count_likes">11</p>
+                <button class="like_button">Like</button>
+            </div>
+
+            <div class="dislike">
+                <p class="count_dislikes">1</p>
+                <button class="dislike_button">Dislike</button>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

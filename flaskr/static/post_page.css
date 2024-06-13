@@ -10,6 +10,8 @@ main {
     width: 80%;
     background-color: #DCCAE9;
     border-radius: 10px;
+    padding: 40px;
+    margin-top: 50px;
 }
 
 .post_header {
@@ -20,6 +22,7 @@ main {
 .post_header h1 {
     font-weight: 600;
     font-size: 40px;
+
 }
 
 .author {
@@ -30,7 +33,9 @@ main {
 .date {
     text-align: center;
 }
-
+.text {
+    margin: 20px 0;
+}
 .avatar {
     display: flex;
     justify-content: center;
@@ -41,5 +46,10 @@ main {
     height: 50px;
     border-radius: 25px;
     margin-right: 10px;
+    font-size: 30px;
+}
 
+.name {
+    font-size: 32px;
+    font-weight: 600;
 }
