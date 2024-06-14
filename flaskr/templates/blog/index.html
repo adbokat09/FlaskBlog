@@ -1,29 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../../static/base.css">
+{% extends 'base.html' %}
+
+{% block styles %}
     <link rel="stylesheet" href="../../static/post_base.css">
     <link rel="stylesheet" href="../../static/post_list.css">
-</head>
-<body>
-<header>
+{% endblock %}
 
-    <div class="logo">Blog</div>
-
-    <div class="header_right">
-        <form class="search">
-            <input name="search" placeholder="search">
-            <button>Go</button>
-        </form>
-
-        <button class="sing_in">Sing in</button>
-    </div>
-
-</header>
-
-<main>
+{% block content %}
     <section class="posts">
         <!--    POST - 1 -->
         <article class="post">
@@ -138,8 +120,4 @@
             </div>
         </article>
     </section>
-</main>
-
-
-</body>
-</html>
+{% endblock %}

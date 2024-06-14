@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../../static/base.css">
-    <link rel="stylesheet" href="../../static/post_base.css">
-    <link rel="stylesheet" href="../../static/post_page.css">
-</head>
-<body>
-<header>
+{% extends 'base.html' %}
 
-    <div class="logo">Blog</div>
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='post_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='post_page.css') }}">
 
-    <div class="header_right">
-        <form class="search">
-            <input name="search" placeholder="search">
-            <button>Go</button>
-        </form>
+{% endblock %}
 
-        <button class="sing_in">Sing in</button>
-    </div>
-
-</header>
-
-
-
-<main>
+{% block content %}
     <section class="post">
         <div class="post_header">
             <h1 class="title">Why Flask is good microframework?</h1>
@@ -126,6 +107,4 @@
             </div>
         </div>
     </section>
-</main>
-</body>
-</html>
+{% endblock %}

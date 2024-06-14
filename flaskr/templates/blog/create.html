@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../../static/base.css">
-    <link rel="stylesheet" href="../../static/post_base.css">
-    <link rel="stylesheet" href="../../static/create.css">
-</head>
-<body>
-    <header>
+{% extends 'base.html' %}
 
-        <div class="logo">Blog</div>
-
-        <div class="header_right">
-            <form class="search">
-                <input name="search" placeholder="search">
-                <button>Go</button>
-            </form>
-
-            <button class="sing_in">Sing in</button>
-        </div>
-
-    </header>
-
-    <main>
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='post_base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
+{% endblock %}
+    {% block content %}
         <section class="create">
             <h1>New Post</h1>
 
@@ -77,5 +58,4 @@
                 <button class="save_button">Save</button>
             </div>
         </section>
-    </main>
-</body>
+    {% endblock %}

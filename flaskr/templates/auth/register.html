@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <section class="login">
+        <h1>Welcome to blog</h1>
+
+        <div class="login_switch">
+            <button class="login_switch_login ">Login</button>
+            <button class="login_switch_sign_up active_switch">Sing Up</button>
+        </div>
+
+        <form class="login_form">
+            <input name="nickname" placeholder="Nickname">
+            <input name="password" type="password" placeholder="Password">
+            <button>Register</button>
+        </form>
+
+    </section>
+
+{% endblock %}
