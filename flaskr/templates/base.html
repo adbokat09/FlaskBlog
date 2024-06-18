@@ -16,14 +16,23 @@
             <input name="search" placeholder="search">
             <button>Go</button>
         </form>
+        {% if g.user %}
+            <p class="register_user">{{ g.user['username'] }}</p>
+            <button id="header__log_out" class="sing_in">Log Out</button>
+        {% else %}
+            <button id="header__sing_in" class="sing_in">Sing in</button>
+        {% endif %}
 
-        <button class="sing_in">Sing in</button>
     </div>
 
 </header>
 
 <main>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
     {% block content %}{% endblock %}
 </main>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>

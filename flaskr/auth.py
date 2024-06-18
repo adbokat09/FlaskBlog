@@ -48,7 +48,7 @@ def login():
         user = db.execute('SELECT id, username, password FROM user WHERE username = ?', (username,)).fetchone()
 
         if not user or not check_password_hash(user['password'], password):
-            error = 'Username or password is required.'
+            error = 'Username or password is incorrect.'
 
         if error is None:
             session.clear()

@@ -75,3 +75,25 @@ body {
     background-position-x: 50%;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.flash {
+    background-color: #cc2f2e;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.register_user {
+    margin-left: 20px;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #9356A0;
+    border-radius: 10px;
+}
