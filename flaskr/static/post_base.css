@@ -37,8 +37,16 @@
     padding-right: 10px;
 }
 
-.dislike button, .like button {
+.passive_reactions {
     background-color: #9356A0;
+    font-size: 16px;
+    font-weight: 550;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+.active_reactions {
+    background-color: #583360;
     font-size: 16px;
     font-weight: 550;
     border: 0;

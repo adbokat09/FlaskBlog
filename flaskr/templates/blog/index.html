@@ -8,116 +8,49 @@
 {% block content %}
     <section class="posts">
         <!--    POST - 1 -->
+        {% for post in posts %}
         <article class="post">
             <div class="info">
                 <div class="img">A</div>
                 <div class="date_and_name">
-                    <p class="author">Adbokat</p>
-                    <i class="publication_date">03.06.2024</i>
+                    <p class="author">{{ post['username'] }}</p>
+                    <i class="publication_date">{{ post['created'].strftime('%Y-%m-%d') }}</i>
                 </div>
             </div>
             <div class="text">
-                <h2 class="post_title">Why Flask is good microframework?</h2>
+                <h2 class="post_title"><a class="post_link" href="{{ url_for('blog.post_details', id=post['id']) }}">{{ post['title'] }}</a></h2>
                 <p>
-                    In the ever-evolving field of web development, the Python-based framework Django has often been the
-                    subject of scrutiny. With its comprehensive “batteries included” philosophy, Django has carved a
-                    significant niche for itself.
+                   {{ post['short_description'] }}
                 </p>
             </div>
             <div class="post_footer">
                 <div class="reactions">
                     <div class="like">
-                        <p>22</p>
-                        <button>Like</button>
+                        <p>{{ count_likes }}</p>
+                        {% if like_status == true %}
+                            <button class="active_reactions">Like</button>
+                        {% else %}
+                            <button class="passive_reactions">Like</button>
+                        {% endif %}
                     </div>
 
                     <div class="dislike">
-                        <p>2</p>
-                        <button>Dislike</button>
+                        <p>{{ count_dislikes }}</p>
+                        {% if like_status == false %}
+                            <button class="active_reactions">Dislike</button>
+                        {% else %}
+                            <button class="passive_reactions">Dislike</button>
+                        {% endif %}
                     </div>
                 </div>
 
                 <div class="tags">
-                    <button>IT</button>
-                    <button>Flask</button>
+                    {% for tag in post['tags'] %}
+                       <button>{{ tag['name'] }}</button>
+                    {% endfor %}
                 </div>
             </div>
         </article>
-
-        <!--    POST - 2 -->
-
-        <article class="post">
-            <div class="info">
-                <div class="img">A</div>
-                <div class="date_and_name">
-                    <p class="author">Adbokat</p>
-                    <i class="publication_date">03.06.2024</i>
-                </div>
-            </div>
-            <div class="text">
-                <h2>Why Flask is good microframework?</h2>
-                <p>
-                    In the ever-evolving field of web development, the Python-based framework Django has often been the
-                    subject of scrutiny. With its comprehensive “batteries included” philosophy, Django has carved a
-                    significant niche for itself.
-                </p>
-            </div>
-            <div class="post_footer">
-                <div class="reactions">
-                    <div class="like">
-                        <p>22</p>
-                        <button>Like</button>
-                    </div>
-
-                    <div class="dislike">
-                        <p>2</p>
-                        <button>Dislike</button>
-                    </div>
-                </div>
-
-                <div class="tags">
-                    <button>IT</button>
-                    <button>Flask</button>
-                </div>
-            </div>
-        </article>
-
-        <!--    POST -  3    -->
-
-        <article class="post">
-            <div class="info">
-                <div class="img">A</div>
-                <div class="date_and_name">
-                    <p class="author">Adbokat</p>
-                    <i class="publication_date">03.06.2024</i>
-                </div>
-            </div>
-            <div class="text">
-                <h2>Why Flask is good microframework?</h2>
-                <p>
-                    In the ever-evolving field of web development, the Python-based framework Django has often been the
-                    subject of scrutiny. With its comprehensive “batteries included” philosophy, Django has carved a
-                    significant niche for itself.
-                </p>
-            </div>
-            <div class="post_footer">
-                <div class="reactions">
-                    <div class="like">
-                        <p>22</p>
-                        <button>Like</button>
-                    </div>
-
-                    <div class="dislike">
-                        <p>2</p>
-                        <button>Dislike</button>
-                    </div>
-                </div>
-
-                <div class="tags">
-                    <button>IT</button>
-                    <button>Flask</button>
-                </div>
-            </div>
-        </article>
+        {% endfor %}
     </section>
 {% endblock %}
