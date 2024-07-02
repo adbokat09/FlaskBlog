@@ -53,3 +53,36 @@ main {
     font-size: 32px;
     font-weight: 600;
 }
+.post_bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.update_and_delete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete, .update {
+
+    /*padding: 5px;*/
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+}
+
+.delete {
+    color: #DCCAE9;
+    background-color: #cc2f2e;
+}
+
+.update {
+    color: #DCCAE9;
+    background-color: #724C9D;
+    margin-left: 20px;
+}

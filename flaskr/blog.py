@@ -105,7 +105,7 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         short_description = request.form['short_description']
-        body = request.form['body']
+        body = request.form['description']
         tags = request.form.getlist('tags')
 
         short_description, error = get_validated_description(short_description)
@@ -185,8 +185,14 @@ def update(id):
     tags = db.execute(
         'select * from tags '
     ).fetchall()
+    post_tags = db.execute(
+        'select * from post_tags where post_id=?',
+        (post['id'],)
+    ).fetchall()
 
-    return render_template('blog/update.html', post=post, tags=tags)
+    post_tag_ids = [tag['tag_id'] for tag in post_tags]
+
+    return render_template('blog/update.html', post=post, tags=tags, post_tag_ids=post_tag_ids)
 
 
 @bp.route('/delete/<int:id>', methods=['POST'])
@@ -251,7 +257,7 @@ def dislike_post(id):
         'where user_id=? AND post_id=?',
         (g.user['id'], id)
     ).fetchone()
-    if status and status['like_status'] is False:
+    if status and status['like_status'] == 0:
         db.execute(
             'update likes set like_status=null '
             'where post_id=? and user_id=?',

@@ -22,28 +22,42 @@
     </div>
 
     <div class="tags">
+        {% for tag in tags %}
+            <button class="tag">{{ tag['name'] }}</button>
+        {% endfor %}
+
         <!--            <button class="tag">IT</button>-->
         <!--            <button class="tag">Flask</button>-->
     </div>
 
     <div class="text">{{ post['body'] }}</div>
     <div class="reactions">
-        <div class="like">
+        <form class="like" method="POST" action="{{ url_for('blog.like_post', id=post['id']) }}">
             <p>{{ count_likes }}</p>
             {% if like_status == true %}
             <button class="active_reactions">Like</button>
             {% else %}
             <button class="passive_reactions">Like</button>
             {% endif %}
-        </div>
+        </form>
+        <div class="post_bottom">
+            <form class="dislike" method="POST" action="{{ url_for('blog.dislike_post', id=post['id']) }}">
+                <p>{{ count_dislikes }}</p>
+                {% if like_status == false %}
+                <button class="active_reactions">Dislike</button>
+                {% else %}
+                <button class="passive_reactions">Dislike</button>
+                {% endif %}
+            </form>
 
-        <div class="dislike">
-            <p>{{ count_dislikes }}</p>
-            {% if like_status == false %}
-            <button class="active_reactions">Dislike</button>
-            {% else %}
-            <button class="passive_reactions">Dislike</button>
-            {% endif %}
+            <div class="update_and_delete">
+                <form action="{{ url_for('blog.delete', id=post['id'])}}" method="POST">
+                    <button class="delete" id="delete">Delete</button>
+                </form>
+                <form action="{{ url_for('blog.update',id=post['id']) }}">
+                    <button class="update" id="update">Update</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>

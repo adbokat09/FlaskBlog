@@ -5,57 +5,40 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
 {% endblock %}
     {% block content %}
-        <section class="create">
+        <form class="create" action="{{ url_for('blog.create') }}" method="POST">
+
             <h1>New Post</h1>
 
             <div class="title">
                 <p>Title</p>
-                <input name="title">
+                <input name="title" required>
             </div>
 
             <div class="short_description">
                 <p>Short description</p>
-                <input name="short_description">
+                <textarea name="short_description" required></textarea>
             </div>
 
             <div class="description">
                 <p>Description</p>
-                <input name="description">
+                <textarea name="description" ></textarea>
             </div>
 
             <div class="tags">
                 <ul class="tag-list">
+                    {% for tag in tags %}
                     <li class="tag-item">
                         <label>
-                            <input type="checkbox" name="tag" value="IT">
-                            IT
+                            <input type="checkbox" name="tags" value="{{ tag['id'] }}">
+                            {{ tag['name'] }}
                         </label>
                     </li>
+                    {% endfor %}
 
-                    <li class="tag-item">
-                        <label>
-                            <input type="checkbox" name="tag" value="Sport">
-                            Sport
-                        </label>
-                    </li>
-
-                    <li class="tag-item">
-                        <label>
-                            <input type="checkbox" name="tag" value="Hobbie">
-                            Hobbie
-                        </label>
-                    </li>
-
-                    <li class="tag-item">
-                        <label>
-                            <input type="checkbox" name="tag" value="Nature">
-                            Nature
-                        </label>
-                    </li>
                 </ul>
             </div>
             <div class="save">
                 <button class="save_button">Save</button>
             </div>
-        </section>
+        </form>
     {% endblock %}

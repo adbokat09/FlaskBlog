@@ -29,48 +29,34 @@
 
             <div class="title">
                 <p>Title</p>
-                <input name="title">
+                <input name="title" value="{{ post['title'] }}">
             </div>
 
             <div class="short_description">
                 <p>Short description</p>
-                <input name="short_description">
+                <textarea name="short_description">{{ post['short_description'] }}</textarea>
             </div>
 
             <div class="description">
                 <p>Description</p>
-                <input name="description">
+                <textarea name="description">{{ post['body'] }}</textarea>
             </div>
 
             <div class="tags">
                 <ul class="tag-list">
+                    {% for tag in tags %}
                     <li class="tag-item">
                         <label>
-                            <input type="checkbox" name="tag" value="IT">
-                            IT
+                            {% if tag['id'] in post_tag_ids %}
+                                <input type="checkbox" name="tags" value="{{ tag['id'] }}" checked>
+                            {% else %}
+                                <input type="checkbox" name="tags" value="{{ tag['id'] }}" >
+                            {% endif %}
+                            {{ tag['name'] }}
                         </label>
                     </li>
+                    {% endfor %}
 
-                    <li class="tag-item">
-                        <label>
-                            <input type="checkbox" name="tag" value="Sport">
-                            Sport
-                        </label>
-                    </li>
-
-                    <li class="tag-item">
-                        <label>
-                            <input type="checkbox" name="tag" value="Hobbie">
-                            Hobbie
-                        </label>
-                    </li>
-
-                    <li class="tag-item">
-                        <label>
-                            <input type="checkbox" name="tag" value="Nature">
-                            Nature
-                        </label>
-                    </li>
                 </ul>
             </div>
             <div class="save">

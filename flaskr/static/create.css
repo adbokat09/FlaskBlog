@@ -19,18 +19,18 @@ main {
 }
 
 
-.title input, .short_description input, .description input {
+.title input, .short_description textarea, .description textarea {
     width: 100%;
     padding: 5px;
     background-color: #DCCAE9;
     border-radius: 5px;
     margin-bottom: 15px;
 }
-.short_description input {
+.short_description textarea {
     height: 100px;
 }
 
-.description input {
+.description textarea {
     height: 200px;
 }
 
