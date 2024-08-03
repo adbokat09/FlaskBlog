@@ -24,22 +24,22 @@
     </header>
 
     <main>
-        <section class="create">
+        <form class="create" action="{{ url_for('blog.update', id=post.id) }}" method="POST">
             <h1>Update Post</h1>
 
             <div class="title">
                 <p>Title</p>
-                <input name="title" value="{{ post['title'] }}">
+                <input name="title" value="{{ post.title }}">
             </div>
 
             <div class="short_description">
                 <p>Short description</p>
-                <textarea name="short_description">{{ post['short_description'] }}</textarea>
+                <textarea name="short_description">{{ post.short_description }}</textarea>
             </div>
 
             <div class="description">
                 <p>Description</p>
-                <textarea name="description">{{ post['body'] }}</textarea>
+                <textarea name="body">{{ post.body }}</textarea>
             </div>
 
             <div class="tags">
@@ -47,12 +47,12 @@
                     {% for tag in tags %}
                     <li class="tag-item">
                         <label>
-                            {% if tag['id'] in post_tag_ids %}
-                                <input type="checkbox" name="tags" value="{{ tag['id'] }}" checked>
+                            {% if tag.id in post_tag_ids %}
+                                <input type="checkbox" name="tags" value="{{ tag.id }}" checked>
                             {% else %}
-                                <input type="checkbox" name="tags" value="{{ tag['id'] }}" >
+                                <input type="checkbox" name="tags" value="{{ tag.id }}" >
                             {% endif %}
-                            {{ tag['name'] }}
+                            {{ tag.name }}
                         </label>
                     </li>
                     {% endfor %}
@@ -62,6 +62,6 @@
             <div class="save">
                 <button class="save_button">Update</button>
             </div>
-        </section>
+        </form>
     </main>
 </body>

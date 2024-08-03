@@ -1,6 +1,9 @@
 import sqlite3
 from flask import current_app, g
 import click
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()  # engine_options={'echo': True}
 
 
 def get_db():
@@ -13,36 +16,56 @@ def get_db():
     return g.db
 
 
-def close_db(e=None):
-    db = g.pop('db', None)
-    if db is not None:
-        db.close()
-
-
 def init_db():
-    db = get_db()
-
-    with current_app.open_resource('schema.sql') as f:
-        db.cursor().executescript(f.read().decode('utf-8'))
+    from flaskr.models import User, Post, Tag, PostXTag, Like
+    with current_app.app_context():
+        db.create_all()
 
 
 @click.command('init-db')
 def init_db_command():
-    # init_db()
-    # click.echo('Database initialized.')
+    init_db()
+    click.echo('Database initialized.')
     create_tags()
     click.echo('Tags created.')
 
 
 def create_tags():
-    db = get_db()
-    db.executemany(
-        'insert into tags (name) values(?)',
-        [('IT',), ('Art',), ('Sport',), ('Cars',), ('collecting',), ('Architecture',), ('traveling',),
-         ('Animals',), ('Health',), ('Sleeping',)]
-    )
-    db.commit()
+    from flaskr.models import Tag
 
-def init_app(app):
-    app.teardown_appcontext(close_db)
-    app.cli.add_command(init_db_command)
+    tags = [
+        Tag(
+            name='IT'
+        ),
+        Tag(
+            name='Art'
+        ),
+        Tag(
+            name='Sport'
+        ),
+        Tag(
+            name='Cars'
+        ),
+        Tag(
+            name='Collecting'
+        ),
+
+        Tag(
+            name='Architecture'
+        ),
+        Tag(
+            name='Traveling'
+        ),
+        Tag(
+            name='Animals'
+        ),
+        Tag(
+            name='Health'
+        ),
+        Tag(
+            name='Sleeping'
+        )
+    ]
+    db.session.bulk_save_objects(tags)
+    db.session.commit()
+

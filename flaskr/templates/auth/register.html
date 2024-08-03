@@ -10,12 +10,12 @@
         <h1>Welcome to blog</h1>
 
         <div class="login_switch">
-            <button class="login_switch_login ">Login</button>
-            <button class="login_switch_sign_up active_switch">Sing Up</button>
+            <button id="login_option" class="login_switch_login ">Login</button>
+            <button id="sign_up_option" class="login_switch_sign_up active_switch">Sing Up</button>
         </div>
 
-        <form class="login_form">
-            <input name="nickname" placeholder="Nickname">
+        <form class="login_form" method="POST">
+            <input name="username" placeholder="Nickname">
             <input name="password" type="password" placeholder="Password">
             <button>Register</button>
         </form>

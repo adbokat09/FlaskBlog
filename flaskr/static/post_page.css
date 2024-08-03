@@ -35,6 +35,8 @@ main {
 }
 .text {
     margin: 20px 0;
+    word-wrap: break-word;
+    line-height: 24px;
 }
 .avatar {
     display: flex;

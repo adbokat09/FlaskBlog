@@ -9,30 +9,30 @@
 {% block content %}
 <section class="post">
     <div class="post_header">
-        <h1 class="title">{{ post['title'] }}</h1>
+        <h1 class="title">{{ post.title }}</h1>
         <div class="author_and_date">
             <div class="author">
                 <div class="avatar">A</div>
-                <p class="name">{{ post['username']}}</p>
+                <p class="name">{{ post.author.username}}</p>
             </div>
             <div class="date">
-                <p>{{ post['created'] }}</p>
+                <p>{{ post.created_at }}</p>
             </div>
         </div>
     </div>
 
     <div class="tags">
         {% for tag in tags %}
-            <button class="tag">{{ tag['name'] }}</button>
+            <button class="tag">{{ tag.name }}</button>
         {% endfor %}
 
         <!--            <button class="tag">IT</button>-->
         <!--            <button class="tag">Flask</button>-->
     </div>
 
-    <div class="text">{{ post['body'] }}</div>
+    <div class="text">{{ post.body }}</div>
     <div class="reactions">
-        <form class="like" method="POST" action="{{ url_for('blog.like_post', id=post['id']) }}">
+        <form class="like" method="POST" action="{{ url_for('blog.like_post', id=post.id) }}">
             <p>{{ count_likes }}</p>
             {% if like_status == true %}
             <button class="active_reactions">Like</button>
@@ -41,7 +41,7 @@
             {% endif %}
         </form>
         <div class="post_bottom">
-            <form class="dislike" method="POST" action="{{ url_for('blog.dislike_post', id=post['id']) }}">
+            <form class="dislike" method="POST" action="{{ url_for('blog.dislike_post', id=post.id) }}">
                 <p>{{ count_dislikes }}</p>
                 {% if like_status == false %}
                 <button class="active_reactions">Dislike</button>
@@ -51,10 +51,10 @@
             </form>
 
             <div class="update_and_delete">
-                <form action="{{ url_for('blog.delete', id=post['id'])}}" method="POST">
+                <form action="{{ url_for('blog.delete', id=post.id)}}" method="POST">
                     <button class="delete" id="delete">Delete</button>
                 </form>
-                <form action="{{ url_for('blog.update',id=post['id']) }}">
+                <form action="{{ url_for('blog.update',id=post.id) }}">
                     <button class="update" id="update">Update</button>
                 </form>
             </div>

@@ -4,6 +4,8 @@ const logOutBtn = document.getElementById('header__log_out');
 const newPostBtn = document.getElementById('posts__new_post')
 const titleBlogP = document.getElementById('title')
 const deletePostBtn = document.getElementById('delete')
+const loginOption = document.getElementById('login_option')
+const signUpOption = document.getElementById('sign_up_option')
 
 if (singInBtn) {
     singInBtn.onclick = function () {
@@ -29,3 +31,14 @@ if (titleBlogP) {
     }
 }
 
+if (loginOption) {
+    loginOption.onclick = function () {
+        location.href = `${mainUrl}/auth/login`
+    }
+}
+
+if (signUpOption) {
+    signUpOption.onclick = function () {
+        location.href = `${mainUrl}/auth/register`
+    }
+}
