@@ -4,6 +4,7 @@ from sqlalchemy import func, case
 from werkzeug.security import check_password_hash
 
 from flaskr.db import db
+from sqlalchemy_utils import aggregated
 
 
 class User(db.Model):
@@ -34,6 +35,15 @@ class Post(db.Model):
     short_description = db.Column(db.Text(), nullable=False)
     body = db.Column(db.Text(), nullable=False)
     tags = db.relationship('Tag', secondary=PostXTag, lazy=True, backref=db.backref('post', lazy=True))
+
+    @aggregated('likes', db.Column(db.Integer))
+    def likes_number(self):
+        return db.func.sum(case((Like.status == True, 1), else_=0))
+
+    @aggregated('likes', db.Column(db.Integer))
+    def dislikes_number(self):
+        return db.func.sum(case((Like.status == False, 1), else_=0))
+
     likes = db.relationship('Like', backref='post', lazy=True)
 
     def __repr__(self):
@@ -67,7 +77,6 @@ class Like(db.Model):
     @property
     def is_unset(self):
         return self.status == self.UNSET
-
 
     @classmethod
     def get_post_likes_num(cls, post_id: int) -> tuple[int, int]:

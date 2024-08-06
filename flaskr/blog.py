@@ -16,7 +16,8 @@ def index():
         posts = posts.filter(Post.title.ilike(f'%{search}%'))
 
     posts = posts.order_by(Post.created_at.desc()).all()
-
+    for post in posts:
+        print(post.title, post.likes_number, )
     return render_template('blog/index.html', posts=posts)
 
 
